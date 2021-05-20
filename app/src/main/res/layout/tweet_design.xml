@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_margin="2dp"
+        android:paddingBottom="10dp"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/image_card_view"
+            app:cardCornerRadius="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            >
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile4"
+                android:id="@+id/tweeterimage"
+                >
+            </ImageView>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Patrick Hamza"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:id="@+id/name"
+            android:layout_toRightOf="@+id/image_card_view"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="pkasemer"
+            android:textColor="#362345"
+            android:textSize="12sp"
+            android:layout_toRightOf="@+id/image_card_view"
+            android:layout_marginTop="48dp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/raleway"
+            android:id="@+id/username"
+
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="When we dance we shall dance forever and change our world together"
+            android:textColor="#231F20"
+            android:textSize="15sp"
+            android:layout_marginTop="84dp"
+            android:layout_marginHorizontal="15dp"
+            android:id="@+id/text_message"
+            android:fontFamily="@font/ralewayregular"
+
+            >
+
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/subjectivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_message"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="13dp"
+            android:fontFamily="@font/robotolight"
+            android:text="Subjectivity"
+            android:textColor="#000"
+
+            android:textSize="10sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.4"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:layout_toRightOf="@id/subjectivity"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/text_message"
+
+            android:layout_marginHorizontal="0dp"
+            android:id="@+id/subjectivity_value"
+            android:fontFamily="@font/robotolight"
+
+            >
+
+        </TextView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Polarity"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:layout_toRightOf="@id/subjectivity_value"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/text_message"
+            android:layout_marginHorizontal="20dp"
+            android:id="@+id/polarity"
+            android:fontFamily="@font/robotolight"
+
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.4"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:layout_toRightOf="@id/polarity"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/text_message"
+            android:layout_marginHorizontal="0dp"
+            android:id="@+id/polarity_value"
+            android:fontFamily="@font/robotolight"
+
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18/05/2021"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:layout_toRightOf="@id/polarity_value"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/text_message"
+            android:layout_marginHorizontal="20dp"
+            android:id="@+id/datevalue"
+            android:fontFamily="@font/robotolight"
+
+            >
+
+        </TextView>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
