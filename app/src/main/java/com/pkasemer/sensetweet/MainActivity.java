@@ -8,27 +8,19 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
+  public class MainActivity extends AppCompatActivity {
     private static final String CHANNEL_ID = "pkasemer" ;
     private ActionBar toolbar;
 
@@ -60,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
 //        Typeface typeface = getResources().getFont(R.font.myfont);
 //        textView.setTypeface(typeface);
         new MyBroadcastReceiver();
-        loadFragment(new FilterFragment());
-        toolbar.setTitle("Tweet Sense");
+        loadFragment(new SavedTweetFragment());
+        toolbar.setTitle("Saved Tweets Analytics");
 
     }
 
@@ -79,22 +71,22 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.navigation_localtweets:
                     addNotification();
                     toolbar.setTitle("Local Tweets");
-                    loadFragment(new HomeFragment());
+                    loadFragment(new LocalTweets());
                     return true;
-                case R.id.navigation_favourite:
-                    toolbar.setTitle("Live Data");
-                    loadFragment(new FavouriteFragment());
+                case R.id.navigation_livetweets:
+                    toolbar.setTitle("Live Twitter Response Analytics");
+                    loadFragment(new LiveDataFragment());
                     return true;
-                case R.id.navigation_search:
-                    toolbar.setTitle("Your Map");
+                case R.id.navigation_userlocation_map:
+                    toolbar.setTitle("Current Location");
                     loadFragment(new UserMapFragment());
                     return true;
-                case R.id.navigation_filter:
-                    toolbar.setTitle("Saved");
-                    loadFragment(new FilterFragment());
+                case R.id.navigation_savedtweet:
+                    toolbar.setTitle("Saved Tweets Analytics");
+                    loadFragment(new SavedTweetFragment());
                     return true;
             }
             return false;

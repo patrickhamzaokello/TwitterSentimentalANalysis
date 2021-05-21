@@ -2,30 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
+    <item
+        android:id="@+id/navigation_savedtweet"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_how_to_vote_24"
+        android:title="Saved" />
 
     <item
-        android:id="@+id/navigation_favourite"
+        android:id="@+id/navigation_livetweets"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_timeline_24"
         android:title="Live Data" />
 
 
 
-    <item
-        android:id="@+id/navigation_filter"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_how_to_vote_24"
-        android:title="Saved" />
         <item
-            android:id="@+id/navigation_home"
+            android:id="@+id/navigation_localtweets"
             android:enabled="true"
             android:icon="@drawable/ic_baseline_map_24"
             android:title="Local Tweets" />
 
     <item
-        android:id="@+id/navigation_search"
+        android:id="@+id/navigation_userlocation_map"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_my_location_24"
-        android:title="Guide" />
+        android:title="Map" />
 
 </menu>

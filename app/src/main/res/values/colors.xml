@@ -18,5 +18,9 @@
     <color name="textColorblack">#000</color>
     <color name="userNameColor">#362345</color>
     <color name="tweettext_color">#231F20</color>
+    <color name="gold_color">#ffd700</color>
+    <color name="bottomnavtext">#673AB7</color>
+    <color name="bottomiconcolor">#673AB7</color>
+    <color name="bottomnav_BGcolor">#FFFFFF</color>
 
 </resources>

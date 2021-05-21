@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#0C0C0C</color>
+    <color name="purple_500">#FF9800</color>
+    <color name="purple_700">#000000</color>
+    <color name="teal_200">#673AB7</color>
+    <color name="teal_700">#4CAF50</color>
+    <color name="black">#FF9800</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="positive">#4CAF50</color>
+    <color name="negative">#BF0404</color>
+    <color name="neutral">#FFC107</color>
+    <color name="recyclerbackground">#0E0E0E</color>
+    <color name="tweetcardbg">#1E1E1E</color>
+    <color name="polaritystatusdefault">#FFC107</color>
+    <color name="textColorblack">#707070</color>
+    <color name="userNameColor">#F3F3F3</color>
+    <color name="tweettext_color">#E3D8DB</color>
+    <color name="gold_color">#ffd700</color>
+    <color name="bottomnavtext">#fff</color>
+    <color name="bottomiconcolor">#fff</color>
+    <color name="bottomnav_BGcolor">#0C0C0C</color>
+</resources>

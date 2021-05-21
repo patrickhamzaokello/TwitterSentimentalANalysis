@@ -16,7 +16,7 @@ import android.widget.Toast;
 import java.util.List;
 
 
-public class FilterFragment extends Fragment {
+public class SavedTweetFragment extends Fragment {
 
     private SenseDBHelper db;
     private Cursor cursor;
@@ -24,13 +24,13 @@ public class FilterFragment extends Fragment {
     private ProgressBar progressBar;
 
 
-    public FilterFragment() {
+    public SavedTweetFragment() {
         // Required empty public constructor
     }
 
 
-    public static FilterFragment newInstance(String param1, String param2) {
-        FilterFragment fragment = new FilterFragment();
+    public static SavedTweetFragment newInstance(String param1, String param2) {
+        SavedTweetFragment fragment = new SavedTweetFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -48,7 +48,7 @@ public class FilterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_filter, container, false);
+        View view =  inflater.inflate(R.layout.fragment_savedtweet, container, false);
         progressBar = view.findViewById(R.id.idPBLoading);
 
 
