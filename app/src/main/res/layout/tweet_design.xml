@@ -49,12 +49,26 @@
         </TextView>
 
         <ImageView
+            android:id="@+id/sharetweet"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/likedtweet"
+            android:src="@drawable/ic_baseline_share_24"
+            >
+
+        </ImageView>
+
+        <ImageView
             android:id="@+id/likedtweet"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:layout_marginRight="20dp"
-android:layout_alignParentRight="true"
+            android:layout_alignParentRight="true"
             android:src="@drawable/ic_baseline_favorite_border_24"
             >
 

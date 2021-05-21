@@ -1,6 +1,8 @@
 package com.pkasemer.sensetweet;
 
 import android.content.ContentValues;
+import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> {
@@ -63,7 +66,7 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
         private TextView nameView;
         private ImageView profile_image_urlView;
         private TextView received_atView;
-        private ImageView likedTweeticon;
+        private ImageView likedTweeticon, sharetweetView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +80,7 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
             polarityView = itemView.findViewById(R.id.polarity_value);
             received_atView = itemView.findViewById(R.id.datevalue);
             likedTweeticon = itemView.findViewById(R.id.likedtweet);
+            sharetweetView = itemView.findViewById(R.id.sharetweet);
 
 
         }
@@ -106,6 +110,20 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
             });
 
 
+            sharetweetView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT, text);
+                    GuideFragment guideFragment = new GuideFragment();
+                    guideFragment.startActivity(intent);
+
+                }
+            });
+
+
 
 
 
@@ -117,21 +135,32 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
 
         }
 
-        private void saveTweet(View v, String id_str, String text, double polarity, double subjectivity, String username, String name, String profile_image_url, String received_at) {
-            SenseDBHelper senseDBHelper = new SenseDBHelper(v.getContext());
-            SQLiteDatabase db = senseDBHelper.getWritableDatabase();
-            ContentValues tweetValues = new ContentValues();
-            tweetValues.put("id_str", id_str);
-            tweetValues.put("text", text);
-            tweetValues.put("polarity", polarity);
-            tweetValues.put("subjectivity", subjectivity);
-            tweetValues.put("username", username);
-            tweetValues.put("name", name);
-            tweetValues.put("profile_image_url", profile_image_url);
-            tweetValues.put("received_at", received_at);
+        private  void sharetweetfun(View v, String text){
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, text);
+        }
 
-            db.insert("TWEET", null, tweetValues);
-                    
+
+
+        private void saveTweet(View v, String id_str, String text, double polarity, double subjectivity, String username, String name, String profile_image_url, String received_at) {
+
+            SenseDBHelper senseDBHelper = new SenseDBHelper(v.getContext());
+
+                SQLiteDatabase db = senseDBHelper.getWritableDatabase();
+                ContentValues tweetValues = new ContentValues();
+                tweetValues.put("id_str", id_str);
+                tweetValues.put("text", text);
+                tweetValues.put("polarity", polarity);
+                tweetValues.put("subjectivity", subjectivity);
+                tweetValues.put("username", username);
+                tweetValues.put("name", name);
+                tweetValues.put("profile_image_url", profile_image_url);
+                tweetValues.put("received_at", received_at);
+
+                db.insert("TWEET", null, tweetValues);
+
+
         }
     }
 }
