@@ -12,5 +12,11 @@
     <color name="positive">#4CAF50</color>
     <color name="negative">#BF0404</color>
     <color name="neutral">#FFC107</color>
+    <color name="recyclerbackground">#F1F1F1</color>
+    <color name="tweetcardbg">#fff</color>
+    <color name="polaritystatusdefault">#FFC107</color>
+    <color name="textColorblack">#000</color>
+    <color name="userNameColor">#362345</color>
+    <color name="tweettext_color">#231F20</color>
 
 </resources>

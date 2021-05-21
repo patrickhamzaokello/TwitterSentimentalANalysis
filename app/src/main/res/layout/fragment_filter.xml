@@ -18,7 +18,7 @@ tools:context=".FilterFragment">
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/filterrecycler"
-    android:background="#F1F1F1"
+    android:background="@color/recyclerbackground"
     >
 
 </androidx.recyclerview.widget.RecyclerView>
