@@ -8,19 +8,27 @@ import android.os.Bundle;
 
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class FilterFragment extends Fragment {
 
-    private SQLiteDatabase db;
+    private SenseDBHelper db;
     private Cursor cursor;
+    List<Tweet> tweetList;
+    private ProgressBar progressBar;
 
 
     public FilterFragment() {
@@ -48,41 +56,27 @@ public class FilterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_filter, container, false);
+        progressBar = view.findViewById(R.id.idPBLoading);
 
 
-        ListView listTweets = (ListView)view.findViewById(R.id.houselistview);
-        SQLiteOpenHelper starbuzzDatabaseHelper = new SenseDBHelper(view.getContext());
-        try {
-            db = starbuzzDatabaseHelper.getReadableDatabase();
-            cursor = db.query("TWEET",
-                    new String[] {"_id", "name"},
-                    null, null, null, null, null
-            );
-
-            SimpleCursorAdapter listAdapter = new SimpleCursorAdapter(view.getContext(),
-                    android.R.layout.simple_list_item_1,
-                    cursor,
-                    new String[]{"name"},
-                    new int[]{android.R.id.text1}
-            );
-
-            listTweets.setAdapter(listAdapter);
-
-
-        } catch (SQLException e){
-            Toast toast = Toast.makeText(view.getContext(), "Database Unavailable", Toast.LENGTH_SHORT);
-            toast.show();
+        RecyclerView recyclerView = view.findViewById(R.id.filterrecycler);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        db = new SenseDBHelper(view.getContext());
+        tweetList = db.listContacts();
+        if (tweetList.size() > 0) {
+            progressBar.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+            Tweetadapter tweetadapter= new Tweetadapter(tweetList);
+            recyclerView.setAdapter(tweetadapter);
+            tweetadapter.notifyDataSetChanged();
         }
-
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                onClickListenerMapsButton(view, id);
-            }
-        };
-
-        //assign listener on list view
-        listTweets.setOnItemClickListener(itemClickListener);
+        else {
+            recyclerView.setVisibility(View.GONE);
+            Toast.makeText(view.getContext(), "There is no tweet saved in database. Start adding now", Toast.LENGTH_LONG).show();
+        }
 
 
         return  view;

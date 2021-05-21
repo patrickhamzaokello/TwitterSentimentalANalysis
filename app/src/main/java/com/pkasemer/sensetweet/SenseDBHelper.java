@@ -3,13 +3,25 @@ package com.pkasemer.sensetweet;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class SenseDBHelper extends SQLiteOpenHelper {
 
     private  static final  String DB_NAME  = "SENSE_DB"; // db name;
     private  static final int DB_VERSION = 1; //version of the app
+    private  static final String DB_TABLE = "TWEET"; //version of the app
+    List<Tweet> tweetList;
 
     SenseDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -46,7 +58,7 @@ public class SenseDBHelper extends SQLiteOpenHelper {
         tweetValues.put("profile_image_url", profile_image_url);
         tweetValues.put("received_at", received_at);
 
-        db.insert("TWEET", null, tweetValues);
+        db.insert(DB_TABLE, null, tweetValues);
 
     }
 
@@ -74,7 +86,7 @@ public class SenseDBHelper extends SQLiteOpenHelper {
         if(oldVersion < 3){
             ContentValues tweetValues = new ContentValues();
             tweetValues.put("text","@UG_Airlines @KagutaMuseveni Can we sell off the gulf stream already. Thanks to H.E @SuluhuSamia for setting a good… https://t.co/EpVHg06mLA");
-            db.update("TWEET", tweetValues, "id_str = ?", new String[] {"1395480974374793216"});
+            db.update(DB_TABLE, tweetValues, "id_str = ?", new String[] {"1395480974374793216"});
 
 //            ADD NEW COLUMN TO TABLE
 //            db.execSQL("ALTER TABLE HOUSE ADD COLUMN FAVORITE NUMERIC;");
@@ -82,5 +94,49 @@ public class SenseDBHelper extends SQLiteOpenHelper {
 //            DELETE RECORDS FROM TABLE
 //            db.delete("HOUSE", "NAME = ?", new String[] {"3 Room House"});
         }
+    }
+
+
+    List<Tweet> listContacts() {
+        String sql = "select * from " + DB_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        tweetList = new ArrayList<>();
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int id = Integer.parseInt(cursor.getString(0));
+                String id_str = cursor.getString(1);
+                String text = cursor.getString(2);
+                double subjectivity = cursor.getDouble(4);
+                double polarity = cursor.getDouble(3);
+                String username = cursor.getString(5);
+                String name = cursor.getString(6);
+                String profile_image_url = cursor.getString(7);
+                String received_at = cursor.getString(8);
+
+                tweetList.add(new Tweet(id_str, text, polarity,subjectivity,username,name,profile_image_url,received_at));
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        return tweetList;
+    }
+    void addContacts(Tweet tweet) {
+        ContentValues values = new ContentValues();
+        values.put("name", tweet.getName());
+        values.put("username", tweet.getUsername());
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(DB_TABLE, null, values);
+    }
+    void updateContacts(Tweet tweet) {
+        ContentValues values = new ContentValues();
+        values.put("name", tweet.getName());
+        values.put("username", tweet.getUsername());
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.update(DB_TABLE, values, "id_str" + " = ?", new String[]{String.valueOf(tweet.getId_str())});
+    }
+    void deleteContact(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(DB_TABLE, "id_str" + " = ?", new String[]{String.valueOf(id)});
     }
 }
