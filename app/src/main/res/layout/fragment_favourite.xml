@@ -5,10 +5,20 @@
     android:layout_height="match_parent"
     tools:context=".FavouriteFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--progress bar for loading indicator-->
+    <ProgressBar
+        android:id="@+id/idPBLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="favourite fragment" />
+        android:id="@+id/favrecyclerView"
+        android:background="#F1F1F1"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

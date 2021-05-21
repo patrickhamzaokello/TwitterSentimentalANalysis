@@ -81,4 +81,37 @@ public class Tweet {
     public String getReceived_at() {
         return received_at;
     }
+
+
+    public void setId_str(String id_str) {
+        this.id_str = id_str;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setPolarity(double polarity) {
+        this.polarity = polarity;
+    }
+
+    public void setSubjectivity(double subjectivity) {
+        this.subjectivity = subjectivity;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setProfile_image_url(String profile_image_url) {
+        this.profile_image_url = profile_image_url;
+    }
+
+    public void setReceived_at(String received_at) {
+        this.received_at = received_at;
+    }
 }
