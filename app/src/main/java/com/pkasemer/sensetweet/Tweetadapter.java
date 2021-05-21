@@ -127,6 +127,7 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
                         Toast.makeText(v.getContext(),
                                 "Tweet Deleted",
                                 Toast.LENGTH_SHORT).show();
+
                     }
 
                 }

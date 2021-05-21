@@ -68,9 +68,8 @@ public class SavedTweetFragment extends Fragment {
         }
         else {
             recyclerView.setVisibility(View.GONE);
-            Toast.makeText(view.getContext(), "There is no tweet saved in database. Start adding now", Toast.LENGTH_LONG).show();
+            Toast.makeText(view.getContext(), "There is no tweet saved in database. Start adding now", Toast.LENGTH_SHORT).show();
         }
-
 
         return  view;
     }
@@ -83,11 +82,8 @@ public class SavedTweetFragment extends Fragment {
         db.close();
     }
 
-    public void onClickListenerMapsButton(View v, long id){
-        Bundle bundle = new Bundle();
-        bundle.putString("key", String.valueOf(id));
-        GuideFragment nextFrag= new GuideFragment();
-        nextFrag.setArguments(bundle);
+    public void onClickRefreshFragment(View v){
+        SavedTweetFragment nextFrag= new SavedTweetFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_container, nextFrag, "findThisFragment")
                 .addToBackStack(null)
