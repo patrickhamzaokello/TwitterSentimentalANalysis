@@ -68,12 +68,15 @@ public class FavouriteFragment extends Fragment {
 
         // calling a method to
         // get all the courses.
-        getAllCourses(view);
         initRecyclerView(view);
+        getAllCourses(view);
+
         return view;
     }
 
     private void getAllCourses(View view) {
+
+        tweetList = new ArrayList<>();
         // on below line we are creating a retrofit
         // builder and passing our base url
         Retrofit retrofit = new Retrofit.Builder()
@@ -112,15 +115,8 @@ public class FavouriteFragment extends Fragment {
                     // below line we are running a loop to add data to our adapter class.
                     for (int i = 0; i < tweetList.size(); i++) {
                         tweetadapter = new Tweetadapter(tweetList);
-
-                        // below line is to set layout manager for our recycler view.
-                        LinearLayoutManager manager = new LinearLayoutManager(view.getContext());
-
-                        // setting layout manager for our recycler view.
-                        recyclerViewxml.setLayoutManager(manager);
-
-                        // below line is to set adapter to our recycler view.
                         recyclerViewxml.setAdapter(tweetadapter);
+                        tweetadapter.notifyDataSetChanged();
                     }
                 } else {
                     Toast.makeText(view.getContext(), "Poor Network", Toast.LENGTH_SHORT).show();
@@ -142,9 +138,7 @@ public class FavouriteFragment extends Fragment {
         layoutManager = new LinearLayoutManager(view.getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerViewxml.setLayoutManager(layoutManager);
-        tweetadapter = new Tweetadapter(tweetList);
-        recyclerViewxml.setAdapter(tweetadapter);
-        tweetadapter.notifyDataSetChanged();
+
     }
 
 }

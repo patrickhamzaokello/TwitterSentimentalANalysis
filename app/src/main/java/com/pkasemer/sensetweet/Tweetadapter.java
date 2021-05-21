@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> {
@@ -62,6 +64,7 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+
             profile_image_urlView = itemView.findViewById(R.id.tweeterimage);
             nameView = itemView.findViewById(R.id.name);
             usernameView = itemView.findViewById(R.id.username);
@@ -74,13 +77,16 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
         }
 
         public void setData(View view, String id_str, String text, double polarity, double subjectivity, String username, String name, String profile_image_url, String received_at) {
-            profile_image_urlView.setImageResource(R.drawable.ic_launcher_background);
+//            profile_image_urlView.setImageResource(R.drawable.ic_launcher_background);
+            Picasso.get().load(profile_image_url).into(profile_image_urlView);
             nameView.setText(name);
             usernameView.setText(username);
             textView.setText(text);
             subjectivityView.setText(String.valueOf(subjectivity));
             polarityView.setText(String.valueOf(polarity));
             received_atView.setText(received_at);
+
+
 
             if(subjectivity > 0){
                 subjectivityView.setTextColor(ContextCompat.getColor(view.getContext(),R.color.negative));
