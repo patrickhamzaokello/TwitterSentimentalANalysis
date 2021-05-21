@@ -1,11 +1,14 @@
 package com.pkasemer.sensetweet;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -60,6 +63,7 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
         private TextView nameView;
         private ImageView profile_image_urlView;
         private TextView received_atView;
+        private ImageView likedTweeticon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,6 +76,7 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
             subjectivityView = itemView.findViewById(R.id.subjectivity_value);
             polarityView = itemView.findViewById(R.id.polarity_value);
             received_atView = itemView.findViewById(R.id.datevalue);
+            likedTweeticon = itemView.findViewById(R.id.likedtweet);
 
 
         }
@@ -87,6 +92,22 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
             received_atView.setText(received_at);
 
 
+            likedTweeticon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(),
+                            id_str+ "The favorite list would appear on clicking this icon",
+                            Toast.LENGTH_LONG).show();
+
+                    saveTweet(v, id_str,text, polarity,subjectivity,username,name, profile_image_url, received_at);
+
+                    likedTweeticon.setImageResource(R.drawable.ic_baseline_favorite_liked);
+                }
+            });
+
+
+
+
 
             if(subjectivity > 0){
                 subjectivityView.setTextColor(ContextCompat.getColor(view.getContext(),R.color.negative));
@@ -94,6 +115,23 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
 
 
 
+        }
+
+        private void saveTweet(View v, String id_str, String text, double polarity, double subjectivity, String username, String name, String profile_image_url, String received_at) {
+            SenseDBHelper senseDBHelper = new SenseDBHelper(v.getContext());
+            SQLiteDatabase db = senseDBHelper.getWritableDatabase();
+            ContentValues tweetValues = new ContentValues();
+            tweetValues.put("id_str", id_str);
+            tweetValues.put("text", text);
+            tweetValues.put("polarity", polarity);
+            tweetValues.put("subjectivity", subjectivity);
+            tweetValues.put("username", username);
+            tweetValues.put("name", name);
+            tweetValues.put("profile_image_url", profile_image_url);
+            tweetValues.put("received_at", received_at);
+
+            db.insert("TWEET", null, tweetValues);
+                    
         }
     }
 }

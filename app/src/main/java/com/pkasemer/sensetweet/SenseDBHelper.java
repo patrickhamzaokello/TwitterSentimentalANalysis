@@ -7,14 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class SenseDBHelper extends SQLiteOpenHelper {
 
@@ -39,7 +33,7 @@ public class SenseDBHelper extends SQLiteOpenHelper {
     }
 
 
-    private  static  void insertHouse(SQLiteDatabase db,
+    private  static  void insertTweet(SQLiteDatabase db,
                                       String id_str,
                                       String text,
                                       double polarity,
@@ -75,13 +69,13 @@ public class SenseDBHelper extends SQLiteOpenHelper {
                     "profile_image_url TEXT," +
                     "received_at TEXT)");
 
-            insertHouse(db, "1395488974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","Kironde Yasin","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
-            insertHouse(db, "1395480974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","Amanda McClelland","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
-            insertHouse(db, "1395480974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","Natureeba paul","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
-            insertHouse(db, "1395480974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","MALE MABIRIZI KIWANUKA","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
-            insertHouse(db, "1395480974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","Owen Robert","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
+            insertTweet(db, "1395488974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","Kironde Yasin","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
+            insertTweet(db, "1395480974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","Amanda McClelland","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
+            insertTweet(db, "1395480974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","Natureeba paul","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
+            insertTweet(db, "1395480974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","MALE MABIRIZI KIWANUKA","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
+            insertTweet(db, "1395480974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","Owen Robert","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
 
-            insertHouse(db, "1395480974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","Rukundo Paul","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
+            insertTweet(db, "1395480974374793216","It was a pleasure to share the stage with @JaneRuth_Aceng, @RicardoEchalar and Abbey Byrne today and discuss applyi… https://t.co/HhssbP2wrJ", 0, 0,"AmandaMcClella2","Rukundo Paul","http://pbs.twimg.com/profile_images/1032710011527553024/NBJR9ttc_normal.jpg" ,"2021-05-20 21:12:57");
         }
         if(oldVersion < 3){
             ContentValues tweetValues = new ContentValues();
@@ -97,7 +91,7 @@ public class SenseDBHelper extends SQLiteOpenHelper {
     }
 
 
-    List<Tweet> listContacts() {
+    List<Tweet> listTweetsBD() {
         String sql = "select * from " + DB_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
         tweetList = new ArrayList<>();
@@ -139,4 +133,6 @@ public class SenseDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(DB_TABLE, "id_str" + " = ?", new String[]{String.valueOf(id)});
     }
+
+
 }
