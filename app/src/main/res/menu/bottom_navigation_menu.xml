@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     >
-    <item
-        android:id="@+id/navigation_home"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="home" />
+
 
     <item
         android:id="@+id/navigation_favourite"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_favorite_24"
-        android:title="favourite" />
+        android:icon="@drawable/ic_baseline_timeline_24"
+        android:title="Live Data" />
 
-    <item
-        android:id="@+id/navigation_search"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_how_to_vote_24"
-        android:title="Guide" />
+
 
     <item
         android:id="@+id/navigation_filter"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_filter_list_24"
-        android:title="Filter" />
+        android:icon="@drawable/ic_baseline_how_to_vote_24"
+        android:title="Saved" />
+        <item
+            android:id="@+id/navigation_home"
+            android:enabled="true"
+            android:icon="@drawable/ic_baseline_map_24"
+            android:title="Local Tweets" />
+
+    <item
+        android:id="@+id/navigation_search"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_my_location_24"
+        android:title="Guide" />
 
 </menu>

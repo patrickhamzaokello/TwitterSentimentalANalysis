@@ -1,15 +1,21 @@
-package com.pkasemer.sensetweet;
+  package com.pkasemer.sensetweet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String CHANNEL_ID = "pkasemer" ;
     private ActionBar toolbar;
 
 
@@ -73,19 +80,20 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    toolbar.setTitle("Tweet Sense");
+                    addNotification();
+                    toolbar.setTitle("Local Tweets");
                     loadFragment(new HomeFragment());
                     return true;
                 case R.id.navigation_favourite:
-                    toolbar.setTitle("Favourites");
+                    toolbar.setTitle("Live Data");
                     loadFragment(new FavouriteFragment());
                     return true;
                 case R.id.navigation_search:
-                    toolbar.setTitle("Guide");
+                    toolbar.setTitle("Your Map");
                     loadFragment(new UserMapFragment());
                     return true;
                 case R.id.navigation_filter:
-                    toolbar.setTitle("Filter");
+                    toolbar.setTitle("Saved");
                     loadFragment(new FilterFragment());
                     return true;
             }
@@ -102,6 +110,25 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
         new MyBroadcastReceiver();
 
+    }
+
+    private void addNotification() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_baseline_favorite_border_24)
+                .setContentTitle("Tweet Sense")
+                .setContentText("Learn what is happening in Uganda")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        // Add as notification
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+// notificationId is a unique int for each notification that you must define
+        notificationManager.notify(2597, builder.build());
     }
 
 

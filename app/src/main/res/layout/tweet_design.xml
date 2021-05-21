@@ -116,7 +116,7 @@
             android:text="Subjectivity"
             android:textColor="#000"
 
-            android:textSize="10sp">
+            android:textSize="12sp">
 
         </TextView>
 
@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:text="2.4"
             android:textColor="#000"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:layout_toRightOf="@id/subjectivity"
             android:layout_marginTop="13dp"
             android:layout_below="@+id/text_message"
@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:text="Polarity"
             android:textColor="#000"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:layout_toRightOf="@id/subjectivity_value"
             android:layout_marginTop="13dp"
             android:layout_below="@+id/text_message"
@@ -161,7 +161,7 @@
             android:layout_height="wrap_content"
             android:text="2.4"
             android:textColor="#000"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:layout_toRightOf="@id/polarity"
             android:layout_marginTop="13dp"
             android:layout_below="@+id/text_message"
@@ -178,7 +178,7 @@
             android:layout_height="wrap_content"
             android:text="18/05/2021"
             android:textColor="#000"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:layout_toRightOf="@id/polarity_value"
             android:layout_marginTop="13dp"
             android:layout_below="@+id/text_message"

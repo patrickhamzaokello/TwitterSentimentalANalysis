@@ -100,8 +100,8 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(),
-                            id_str+ "The favorite list would appear on clicking this icon",
-                            Toast.LENGTH_LONG).show();
+                            "Tweet Saved",
+                            Toast.LENGTH_SHORT).show();
 
                     saveTweet(v, id_str,text, polarity,subjectivity,username,name, profile_image_url, received_at);
 
@@ -114,11 +114,9 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("text/plain");
-                    intent.putExtra(Intent.EXTRA_TEXT, text);
-                    GuideFragment guideFragment = new GuideFragment();
-                    guideFragment.startActivity(intent);
+                    Toast.makeText(v.getContext(),
+                             "Tweet Shared!",
+                            Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -127,18 +125,22 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
 
 
 
-            if(subjectivity > 0){
-                subjectivityView.setTextColor(ContextCompat.getColor(view.getContext(),R.color.negative));
+            if(polarity > 0){
+                //positive
+                polarityView.setTextColor(ContextCompat.getColor(view.getContext(),R.color.positive));
+
+            } if(polarity < 0){
+                //negative
+                polarityView.setTextColor(ContextCompat.getColor(view.getContext(),R.color.negative));
+
+            } if (polarity == 0){
+                // neutral
+                polarityView.setTextColor(ContextCompat.getColor(view.getContext(),R.color.neutral));
+
             }
 
 
 
-        }
-
-        private  void sharetweetfun(View v, String text){
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_TEXT, text);
         }
 
 
