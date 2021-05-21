@@ -62,7 +62,7 @@ public class LocalTweets extends Fragment {
 
     private void initData() {
         tweetList = new ArrayList<>();
-        tweetList.add(new Tweet("1395363614975004675",
+        tweetList.add(new Tweet("13954889743747932161",
                 "Starting in a few seconds, do not miss  Welcome to the ride make believe the real truth that exists",
                 -0.1,
                 -4,
@@ -71,49 +71,56 @@ public class LocalTweets extends Fragment {
                 "http://pbs.twimg.com/profile_images/1294326802182279169/jim68KJe_normal.jpg",
                 "2021-05-20 12:59:50"));
 
-        tweetList.add(new Tweet("1395363614975004675",
+        tweetList.add(new Tweet("13954889743747932162",
                 "Starting in a few seconds, do not miss  Welcome to the ride make believe the real truth that exists",
                 -0.1,
                 0.2,
                 "MM_Loembe",
                 "Marguerite M. Loembe",
                 "http://pbs.twimg.com/profile_images/1294326802182279169/jim68KJe_normal.jpg",
-                "2021-05-20 12:59:50"));tweetList.add(new Tweet("1395363614975004675",
+                "2021-05-20 12:59:50"));
+        tweetList.add(new Tweet("13954889743747932163",
                 "Starting in a few seconds, do not miss  Welcome to the ride make believe the real truth that exists",
                 -0.1,
                 0.2,
                 "MM_Loembe",
                 "Marguerite M. Loembe",
                 "http://pbs.twimg.com/profile_images/1294326802182279169/jim68KJe_normal.jpg",
-                "2021-05-20 12:59:50"));tweetList.add(new Tweet("1395363614975004675",
+                "2021-05-20 12:59:50"));
+        tweetList.add(new Tweet("13954889743747932164",
                 "Starting in a few seconds, do not miss  Welcome to the ride make believe the real truth that exists",
                 -0.1,
                 0.2,
                 "MM_Loembe",
                 "Marguerite M. Loembe",
                 "http://pbs.twimg.com/profile_images/1294326802182279169/jim68KJe_normal.jpg",
-                "2021-05-20 12:59:50"));tweetList.add(new Tweet("1395363614975004675",
+                "2021-05-20 12:59:50"));
+        tweetList.add(new Tweet("13954889743747932165",
                 "Starting in a few seconds, do not miss  Welcome to the ride make believe the real truth that exists",
                 -0.1,
                 0.2,
                 "MM_Loembe",
                 "Marguerite M. Loembe",
                 "http://pbs.twimg.com/profile_images/1294326802182279169/jim68KJe_normal.jpg",
-                "2021-05-20 12:59:50"));tweetList.add(new Tweet("1395363614975004675",
+                "2021-05-20 12:59:50"));
+        tweetList.add(new Tweet("13954889743747932166",
                 "Starting in a few seconds, do not miss  Welcome to the ride make believe the real truth that exists",
                 -0.1,
                 0.2,
                 "MM_Loembe",
                 "Marguerite M. Loembe",
                 "http://pbs.twimg.com/profile_images/1294326802182279169/jim68KJe_normal.jpg",
-                "2021-05-20 12:59:50"));tweetList.add(new Tweet("1395363614975004675",
+                "2021-05-20 12:59:50"));
+        tweetList.add(new Tweet("13954889743747932167",
                 "Starting in a few seconds, do not miss  Welcome to the ride make believe the real truth that exists",
                 -0.1,
                 0.2,
                 "MM_Loembe",
                 "Marguerite M. Loembe",
                 "http://pbs.twimg.com/profile_images/1294326802182279169/jim68KJe_normal.jpg",
-                "2021-05-20 12:59:50"));tweetList.add(new Tweet("1395363614975004675",
+                "2021-05-20 12:59:50"));
+
+        tweetList.add(new Tweet("13954889743747932168",
                 "Starting in a few seconds, do not miss  Welcome to the ride make believe the real truth that exists",
                 -0.1,
                 0.2,

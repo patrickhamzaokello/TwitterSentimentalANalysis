@@ -98,17 +98,37 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
             polarityView.setText(String.valueOf(polarity));
             received_atView.setText(received_at);
 
+            SenseDBHelper  db = new SenseDBHelper(view.getContext());
+
+            if(db.checktweetindb(id_str)){
+                likedTweeticon.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+
+            } else {
+
+                likedTweeticon.setImageResource(R.drawable.ic_baseline_favorite_liked);
+
+            }
+
 
             likedTweeticon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(),
-                            "Tweet Saved",
-                            Toast.LENGTH_SHORT).show();
+                    SenseDBHelper  db = new SenseDBHelper(v.getContext());
+                    boolean record = db.checktweetindb(id_str);
+                    if(record){
+                        db.addTweet(id_str,text, polarity,subjectivity,username,name, profile_image_url, received_at);
+                        likedTweeticon.setImageResource(R.drawable.ic_baseline_favorite_liked);
+                        Toast.makeText(v.getContext(),
+                                "Tweet Saved",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.deleteTweet(id_str);
+                        likedTweeticon.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                        Toast.makeText(v.getContext(),
+                                "Tweet Deleted",
+                                Toast.LENGTH_SHORT).show();
+                    }
 
-                    saveTweet(v, id_str,text, polarity,subjectivity,username,name, profile_image_url, received_at);
-
-                    likedTweeticon.setImageResource(R.drawable.ic_baseline_favorite_liked);
                 }
             });
 
@@ -121,10 +141,9 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
                              "Tweet Shared!",
                             Toast.LENGTH_SHORT).show();
 
+
                 }
             });
-
-
 
 
 
@@ -149,26 +168,5 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
 
         }
 
-
-
-        private void saveTweet(View v, String id_str, String text, double polarity, double subjectivity, String username, String name, String profile_image_url, String received_at) {
-
-            SenseDBHelper senseDBHelper = new SenseDBHelper(v.getContext());
-
-                SQLiteDatabase db = senseDBHelper.getWritableDatabase();
-                ContentValues tweetValues = new ContentValues();
-                tweetValues.put("id_str", id_str);
-                tweetValues.put("text", text);
-                tweetValues.put("polarity", polarity);
-                tweetValues.put("subjectivity", subjectivity);
-                tweetValues.put("username", username);
-                tweetValues.put("name", name);
-                tweetValues.put("profile_image_url", profile_image_url);
-                tweetValues.put("received_at", received_at);
-
-                db.insert("TWEET", null, tweetValues);
-
-
-        }
     }
 }
