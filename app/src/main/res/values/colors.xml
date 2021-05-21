@@ -11,6 +11,6 @@
 
     <color name="positive">#4CAF50</color>
     <color name="negative">#BF0404</color>
-    <color name="neutral">#673AB7</color>
+    <color name="neutral">#FFC107</color>
 
 </resources>

@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 //        Typeface typeface = getResources().getFont(R.font.myfont);
 //        textView.setTypeface(typeface);
         new MyBroadcastReceiver();
-        loadFragment(new HomeFragment());
+        loadFragment(new FilterFragment());
         toolbar.setTitle("Tweet Sense");
 
     }

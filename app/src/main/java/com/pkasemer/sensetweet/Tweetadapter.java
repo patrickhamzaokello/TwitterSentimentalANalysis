@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -67,6 +68,7 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
         private ImageView profile_image_urlView;
         private TextView received_atView;
         private ImageView likedTweeticon, sharetweetView;
+        private CardView polaritystatusview;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -81,6 +83,7 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
             received_atView = itemView.findViewById(R.id.datevalue);
             likedTweeticon = itemView.findViewById(R.id.likedtweet);
             sharetweetView = itemView.findViewById(R.id.sharetweet);
+            polaritystatusview = itemView.findViewById(R.id.polaritystatus);
 
 
         }
@@ -128,14 +131,17 @@ public class Tweetadapter extends RecyclerView.Adapter<Tweetadapter.ViewHolder> 
             if(polarity > 0){
                 //positive
                 polarityView.setTextColor(ContextCompat.getColor(view.getContext(),R.color.positive));
+                polaritystatusview.setCardBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.positive));
 
             } if(polarity < 0){
                 //negative
                 polarityView.setTextColor(ContextCompat.getColor(view.getContext(),R.color.negative));
+                polaritystatusview.setCardBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.negative));
 
             } if (polarity == 0){
                 // neutral
                 polarityView.setTextColor(ContextCompat.getColor(view.getContext(),R.color.neutral));
+                polaritystatusview.setCardBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.neutral));
 
             }
 
