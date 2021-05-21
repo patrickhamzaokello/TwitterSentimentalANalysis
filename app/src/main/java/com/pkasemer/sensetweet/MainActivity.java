@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -34,11 +33,17 @@ public class MainActivity extends AppCompatActivity {
 
 //        Typeface typeface = getResources().getFont(R.font.myfont);
 //        textView.setTypeface(typeface);
+        new MyBroadcastReceiver();
         loadFragment(new HomeFragment());
-
         toolbar.setTitle("Tweet Sense");
 
+    }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new MyBroadcastReceiver();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -69,12 +74,15 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+
     private void loadFragment(Fragment fragment) {
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+        new MyBroadcastReceiver();
+
     }
 
 
