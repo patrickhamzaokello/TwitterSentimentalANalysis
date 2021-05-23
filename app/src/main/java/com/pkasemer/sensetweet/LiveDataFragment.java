@@ -29,6 +29,7 @@ public class LiveDataFragment extends Fragment {
     Tweetadapter tweetadapter;
     private ProgressBar progressBar;
 
+
     public LiveDataFragment() {
         // Required empty public constructor
     }
@@ -60,12 +61,12 @@ public class LiveDataFragment extends Fragment {
         // calling a method to
         // get all the courses.
         initRecyclerView(view);
-        getAllCourses(view);
+        getFetchTweets(view);
 
         return view;
     }
 
-    private void getAllCourses(View view) {
+    private void getFetchTweets(View view) {
 
         tweetList = new ArrayList<>();
         // on below line we are creating a retrofit
